@@ -12,14 +12,15 @@ class Videos(Base):
     async def check_video_id(self, video_id: int) -> bool:
         return not await self.VideosTable.query.where(self.VideosTable.id == video_id).gino.first() is None
 
-    async def add_video(self, video_token):
+    async def add_video(self, video_token) -> int:
         video = self.VideosTable(video=video_token)
 
         await video.create()
+        return video.id
 
     async def delete_video(self, video_id: int) -> bool:
         if await self.check_video_id(video_id):
-            video = self.VideosTable.query.where(self.VideosTable.id == video_id).gino.first()
+            video = await self.VideosTable.query.where(self.VideosTable.id == video_id).gino.first()
 
             await video.delete()
             return True

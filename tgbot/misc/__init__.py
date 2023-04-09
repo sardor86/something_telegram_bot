@@ -1,1 +1,2 @@
-from .state import AddVideo
+from .state import AddVideo, DeleteVideo, \
+                   AddChannel

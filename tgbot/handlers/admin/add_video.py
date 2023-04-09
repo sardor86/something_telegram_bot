@@ -11,11 +11,12 @@ async def start_crate_video(callback: CallbackQuery) -> None:
     await AddVideo.get_video.set()
 
 
-async def get_video(massage: Message, state: FSMContext) -> None:
-    video = massage.video.file_id
+async def get_video(message: Message, state: FSMContext) -> None:
+    video = message.video.file_id
 
-    await Videos().add_video(video)
-    await massage.reply('Видео сохранено')
+    id_video = await Videos().add_video(video)
+    await message.reply('Видео сохранено')
+    await message.reply(f'id видео {id_video}')
     await state.finish()
 
 

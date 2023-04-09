@@ -3,7 +3,7 @@ from tgbot.config import gino_db
 
 
 class Channels(Base):
-    class ChannelsTable(gino_db):
+    class ChannelsTable(gino_db.Model):
         __tablename__ = 'channels'
 
         id = gino_db.Column(gino_db.Integer(), primary_key=True)
