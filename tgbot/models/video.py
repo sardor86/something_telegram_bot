@@ -26,4 +26,7 @@ class Videos(Base):
             return True
         return False
 
+    async def get_video(self):
+        return await self.VideosTable.query.gino.first()
+
 

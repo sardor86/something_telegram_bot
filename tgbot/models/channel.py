@@ -30,3 +30,6 @@ class Channels(Base):
             await channel.delete()
             return True
         return False
+
+    async def get_all_channel(self) -> list:
+        return await self.ChannelsTable.query.gino.all()
