@@ -11,3 +11,7 @@ class DeleteVideo(StatesGroup):
 
 class AddChannel(StatesGroup):
     get_channel_url = State()
+
+
+class DeleteChannel(StatesGroup):
+    get_channel_id = State()

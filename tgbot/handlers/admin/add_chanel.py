@@ -12,8 +12,9 @@ async def start_add_chanel(callback: CallbackQuery) -> None:
 
 
 async def get_chanel_url(message: Message, state: FSMContext) -> None:
-    if await Channels().add_channel(message.text):
-        await message.reply('Успешно добавлено')
+    channel = await Channels().add_channel(message.text)
+    if channel != -1:
+        await message.reply(f'Успешно добавлено его id {channel}')
         await state.finish()
         return None
     await message.reply('Этот канал уже существует')
